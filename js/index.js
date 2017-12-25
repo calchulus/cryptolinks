@@ -13,7 +13,17 @@ firebase.initializeApp(config);
 
 // New Firebase
 var resourceDB = firebase.database().ref('resource-tip');
-var resourceRef = resourceDB.limitToLast(10000000);//limit to last
+var resourceRef = resourceDB.orderByChild('tip');//limit to last
+
+// orderByChild('tip')
+//function sorting() {
+//    x = document.getElement("text menu")
+//}
+//
+//ref.orderByKey().on("child_added", function(snapshot) {
+//  console.log(snapshot.key);
+//});
+
 
 // Form as a JSON
 $(document).ready(function() {
@@ -32,11 +42,11 @@ resourceRef.once("value")
         var str = '';
         var tipTime = moment.utc(tipsArray.tiptime).local().startOf('hour').fromNow();
         
-            str += '<div class="ui card"> <div class="content">' +
-    '<a style="text-decoration: none;" href=' + tipsArray.url + '>' +
-    '<div class="header" style="font-weight: bold; font-size: 1.28571429em; margin-top: -0.21425em; line-height: 1.28571429em; color: rgba(0, 0, 0, 0.85) !important" >' +
-      tipsArray.category + '</div> <div class="meta"> <p>' + tipsArray.tip + '</p></div></a></div></div>';        
-      }
+              str += '<div class="ui card"> <div class="content">' +
+    '<a style="text-decoration: none;" href=' + tipsArray.url +
+    '><div class="header" style="font-weight: bold; font-size: 1.28571429em; margin-top: -0.21425em; line-height: 1.28571429em; color: rgba(0, 0, 0, 0.85) !important" >' +
+      tipsArray.tip + '  <div style="font-size: 0.6em;" class="ui blue  basic label">' + tipsArray.category + '</div> </div> <div class="meta"> <p>' + tipsArray.description + '</p></div></a></div></div>';        
+        }
  
       // Create the list in HTML
       $('.resourceTipsList').append(str);
@@ -53,6 +63,7 @@ resourceRef.once("value")
       'category': $('select#category').val(),
       'tip': $('textarea#tip').val(),
       'url' : $('textarea#url').val(),
+      'description' : $('textarea#description').val(),
       'tiptime': Date.now()
     });
 
@@ -62,7 +73,9 @@ resourceRef.once("value")
   });
 });
 
-
+//$('.ui.dropdown').dropdown({
+//  allowAdditions: true,
+//}); 
 
 
 
