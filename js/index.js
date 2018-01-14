@@ -84,7 +84,7 @@ resourceRef.once("value")
               str += '<li style="padding-bottom: 14px"><div class="ui card"> <div class="content">' +
     '<a style="text-decoration: none;" href=' + tipsArray.url +
     '><div class="header" style="font-weight: bold; font-size: 1.28571429em; margin-top: -0.21Z425em; line-height: 1.28571429em; color: rgba(0, 0, 0, 0.85) !important" >' +
-      tipsArray.tip + ' </div> <p style="font-size: 0.6em;" class="uiZ blue  basic label">' + tipsArray.category + '</p>  <div class="meta"> <p class="description">' + tipsArray.description + '</p></div></a></div></div></li>';  
+      tipsArray.tip + ' </div> <p style="font-size: 0.6em;" class="ui  blue  basic label">' + tipsArray.category + '</p>  <div class="meta"> <p class="description">' + tipsArray.description + '</p></div></a></div></div></li>';  
 //    
 //              str.attr('link': tipsArray.url, 'title': tipsArray.tip, 'category': tipsArray.url, 'description': tipsArray.description);
         }
